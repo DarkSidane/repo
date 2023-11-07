@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
+import { HelloMessage } from '../HelloMessage';
 
 @Controller()
 export class AppController 
@@ -7,8 +8,8 @@ export class AppController
 	constructor(private readonly appService: AppService) {}
 
 	@Get('/hello/:name')
-	getHello(@Param('name') name: string): string 
+	getHello(@Param('name') name: string): HelloMessage 
 	{
-		return `Hello, ${name}!`;
+	    return {"hello":name}; 
 	}
 }
